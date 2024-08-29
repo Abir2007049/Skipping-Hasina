@@ -3,9 +3,9 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         int boardWidth=750;
-        int boardHeight=350;
+        int boardHeight=450;
 
-        JFrame frame=new JFrame("SkipHasina"); 
+        JFrame frame=new JFrame("SkipHasina");
         frame.setVisible(true);
         frame.setSize(boardWidth,boardHeight);
         //frame.setLocation(null);

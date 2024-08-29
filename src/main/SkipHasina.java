@@ -6,14 +6,18 @@ import java.util.ArrayList;
 import javax.swing.*;
 public class SkipHasina extends JPanel implements ActionListener,KeyListener {
     int boardWidth =750;
-    int boardHeight = 350;
+    int boardHeight = 450;
 
     Image studImg;
+    Image bg;
     Image studJumpImg;
     Image studDeadImg;
     Image hasu1;
     Image hasu2;
     Image hasu3;
+    Image hasu4;
+    Image hasu5;
+    Image hasu6;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -90,6 +94,9 @@ public class SkipHasina extends JPanel implements ActionListener,KeyListener {
     int hasu1Width=70;
     int hasu2Width=90;
     int hasu3Width=90;
+    int hasu4Width=90;
+    int hasu5Width=90;
+    int hasu6Width=90;
     int hasuHeight=80;
     int hasuX=700;
     int hasuY=boardHeight-hasuHeight;
@@ -124,9 +131,13 @@ public class SkipHasina extends JPanel implements ActionListener,KeyListener {
 
         studDeadImg = loadImage("images/student2.jpg");
         studJumpImg = loadImage("images/student.png");
-        hasu1 = loadImage("images/hasu.png");
+        hasu1 = loadImage("images/hasu.jpg");
         hasu2 = loadImage("images/hasu2.jpg");
-        hasu3 = loadImage("images/hasu3.jpg");
+        hasu3 = loadImage("images/hasu.gif");
+        hasu4 = loadImage("images/hasu4.gif");
+        hasu5 = loadImage("images/hasu5.gif");
+        hasu6 = loadImage("images/hasu6.gif");
+        bg = loadImage("images/bg.png");
 
         //stud
         student = new Block(studX, studY, studWidth, studHeight, studImg);
@@ -156,18 +167,33 @@ public class SkipHasina extends JPanel implements ActionListener,KeyListener {
 
         }
         double placeHasuChance=Math.random();
-        if(placeHasuChance>0.40)
+        if(placeHasuChance>0.65)
         {
             Block hasu=new Block(hasuX,hasuY,hasu3Width,hasuHeight,hasu3);
             hasuArray.add(hasu);
 
         }
-        else if(placeHasuChance>.30)
+        else if(placeHasuChance>.55)
+        {
+            Block hasu=new Block(hasuX,hasuY,hasu4Width,hasuHeight,hasu4);
+            hasuArray.add(hasu);
+        }
+        else if(placeHasuChance>.45)
+        {
+            Block hasu=new Block(hasuX,hasuY,hasu5Width,hasuHeight,hasu5);
+            hasuArray.add(hasu);
+        }
+        else if(placeHasuChance>.35)
         {
             Block hasu=new Block(hasuX,hasuY,hasu2Width,hasuHeight,hasu2);
             hasuArray.add(hasu);
         }
-        else //if(placeHasuChance>.20)
+        else if(placeHasuChance>.25)
+        {
+            Block hasu=new Block(hasuX,hasuY,hasu6Width,hasuHeight,hasu6);
+            hasuArray.add(hasu);
+        }
+        else if(placeHasuChance>.20)
         {
             Block hasu=new Block(hasuX,hasuY,hasu1Width,hasuHeight,hasu1);
             hasuArray.add(hasu);
@@ -194,6 +220,7 @@ public class SkipHasina extends JPanel implements ActionListener,KeyListener {
     }
     public void draw(Graphics g)
     {
+        g.drawImage(bg,0,0,boardWidth,boardHeight,null);
         g.drawImage(student.img,student.x,student.y,student.width,student.height,null);
 
         for(int i=0;i<hasuArray.size();i++)
