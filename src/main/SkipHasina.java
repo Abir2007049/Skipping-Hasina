@@ -265,6 +265,7 @@ public class SkipHasina extends JPanel implements ActionListener,KeyListener {
             {   gameOver=true;
 
                 student.img=studDeadImg;
+                Main.stopSound();
             }
         }
         //score
